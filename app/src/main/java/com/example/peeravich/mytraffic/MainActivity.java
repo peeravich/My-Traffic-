@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.transition.Fade;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
@@ -60,7 +61,14 @@ public class MainActivity extends AppCompatActivity {
         //Create ListView
         MyAdapter myAdapter = new MyAdapter(this,iconInt, titleStrings,detailShort );
 listView.setAdapter(myAdapter);
+      listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+          @Override
+          public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+              Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+              startActivity(intent);
+          }
+      });
     }//main Method
 
     public void clickAboutMe(View View) {
